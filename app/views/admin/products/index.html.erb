@@ -21,9 +21,9 @@
       <td>
         <%= link_to product path (product) do %>
           <% if product.image.present? %>
-          <%= image tag (product.image.thumb.url, class: "thumbnail") $%>
+          <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
         <% else %>
-          <%= image tag ("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+          <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
         <% end %>
       <% end %>
       </td>
@@ -31,7 +31,7 @@
         <%= product.title %>
       </td>
       <td>
-        <%= product.price $%>
+        <%= product.price %>
       </td>
       <td>
         <%= link_to("Edit", edit_admin_product_path(product)) %>
