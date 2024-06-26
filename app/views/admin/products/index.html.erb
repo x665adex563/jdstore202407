@@ -1,4 +1,4 @@
-<h2> Product List </h2> |
+<h2> Product List </h2>
 <div class="pull-right" style="padding-bottom: 20px;">
   <%= link_to("新增商品", new_admin_product_path, class: "btn btn-primary btn-sm") %>
 </div>
@@ -19,7 +19,7 @@
         <%= product.id %>
       </td>
       <td>
-        <%= link_to product path (product) do %>
+        <%= link_to product_path(product) do %>
           <% if product.image.present? %>
           <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
         <% else %>
