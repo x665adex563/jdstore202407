@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
       current_cart.cart_items.each do |cart_item|
         product_list = ProductList.new
         product_list.order = @order
-        proudct_list.product_name = cart_item.product.title
+        product_list.product_name = cart_item.product.title
         product_list.quantity = cart_item.quantity
         product_list.save
       end
@@ -25,6 +25,22 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find_by_token(params[:id])
     @product_lists = @order.product_lists
+  end
+
+  def pay_with_creditcard
+    @order = Order.find_by_token(params[:id])
+    @order.set_payment_with!("creditcard")
+    @order.pay!
+
+    redirect_to order_path(@order.token), notice: "使用信用卡完成付款"
+  end
+
+  def pay_with_ewallet
+    @order = Order.find_by_token(params[:id])
+    @order.set_payment_with!("ewallet")
+    @order.pay!
+
+    redirect_to order_path(@order.token), notice: "使用電子錢包完成付款"
   end
 
   private
