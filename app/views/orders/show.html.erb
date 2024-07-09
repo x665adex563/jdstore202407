@@ -61,11 +61,11 @@
     </table>
 
         <div class="pull-left">
-          <% if @order.order_palced? || @order.paid? %>
-            <%= link_to("申請取消訂單", apply_to_cancel_order_path(@order.token), method: :post, class: "btn btn-danger") %>
+          <% if @order.order_placed? || @order.paid? %>
+            <%= link_to("申請取消訂單", apply_to_cancel_order_path(@order.token),method: :post, class: "btn btn-info") %>
           <% end %>
         </div>
-        
+
     <% if !@order.is_paid? %>
     <div class="group pull-right">
       <%= link_to("信用卡付款", pay_with_creditcard_order_path(@order.token), :method => :post, :class => "btn btn-danger") %>
